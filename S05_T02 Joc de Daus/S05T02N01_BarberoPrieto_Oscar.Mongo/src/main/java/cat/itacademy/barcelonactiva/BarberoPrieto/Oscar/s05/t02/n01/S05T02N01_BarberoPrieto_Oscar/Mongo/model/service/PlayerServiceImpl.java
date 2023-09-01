@@ -1,5 +1,5 @@
 
-package cat.itacademy.barcelonactiva.BarberoPrieto_Oscar.s05.t02.n01.S05T02N01.BarberoPrieto_Oscar.model.service;
+package cat.itacademy.barcelonactiva.BarberoPrieto.Oscar.s05.t02.n01.S05T02N01_BarberoPrieto_Oscar.Mongo.model.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,19 +8,19 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cat.itacademy.barcelonactiva.BarberoPrieto_Oscar.s05.t02.n01.S05T02N01.BarberoPrieto_Oscar.model.dto.GameDTO;
-import cat.itacademy.barcelonactiva.BarberoPrieto_Oscar.s05.t02.n01.S05T02N01.BarberoPrieto_Oscar.model.dto.PlayerDTO;
-import cat.itacademy.barcelonactiva.BarberoPrieto_Oscar.s05.t02.n01.S05T02N01.BarberoPrieto_Oscar.model.entities.Game;
-import cat.itacademy.barcelonactiva.BarberoPrieto_Oscar.s05.t02.n01.S05T02N01.BarberoPrieto_Oscar.model.entities.Player;
-import cat.itacademy.barcelonactiva.BarberoPrieto_Oscar.s05.t02.n01.S05T02N01.BarberoPrieto_Oscar.model.repository.GameRepository;
-import cat.itacademy.barcelonactiva.BarberoPrieto_Oscar.s05.t02.n01.S05T02N01.BarberoPrieto_Oscar.model.repository.PlayerRepository;
+import cat.itacademy.barcelonactiva.BarberoPrieto.Oscar.s05.t02.n01.S05T02N01_BarberoPrieto_Oscar.Mongo.model.dto.GameDTO;
+import cat.itacademy.barcelonactiva.BarberoPrieto.Oscar.s05.t02.n01.S05T02N01_BarberoPrieto_Oscar.Mongo.model.dto.PlayerDTO;
+import cat.itacademy.barcelonactiva.BarberoPrieto.Oscar.s05.t02.n01.S05T02N01_BarberoPrieto_Oscar.Mongo.model.entities.Game;
+import cat.itacademy.barcelonactiva.BarberoPrieto.Oscar.s05.t02.n01.S05T02N01_BarberoPrieto_Oscar.Mongo.model.entities.Player;
+import cat.itacademy.barcelonactiva.BarberoPrieto.Oscar.s05.t02.n01.S05T02N01_BarberoPrieto_Oscar.Mongo.model.repository.GameRepository;
+import cat.itacademy.barcelonactiva.BarberoPrieto.Oscar.s05.t02.n01.S05T02N01_BarberoPrieto_Oscar.Mongo.model.repository.PlayerRepository;
 
 @Service
 public class PlayerServiceImpl implements PlayerService {
 
 	@Autowired
 	private PlayerRepository playerRepository;
-	
+
 	@Autowired
 	private GameRepository gameRepository;
 	
@@ -56,7 +56,7 @@ public class PlayerServiceImpl implements PlayerService {
 
 	// Informació d'un jugador
 	@Override
-	public Player findById(Long id) throws Exception {
+	public Player findById(String id) throws Exception {
 		
 		try {
 			
@@ -70,7 +70,7 @@ public class PlayerServiceImpl implements PlayerService {
 
 	// Editar un jugador
 	@Override 
-	public Player update(Long id, Player player) throws Exception {
+	public Player update(String id, Player player) throws Exception {
 
 		try {
 
@@ -90,7 +90,7 @@ public class PlayerServiceImpl implements PlayerService {
 
 	// Eliminar un jugador
 	@Override 
-	public boolean delete(Long id) throws Exception {
+	public boolean delete(String id) throws Exception {
 		try {
 
 			if (playerRepository.existsById(id)) {
@@ -106,7 +106,7 @@ public class PlayerServiceImpl implements PlayerService {
 
 	// Partides d'un jugador
 	@Override 
-	public List<?> getAllGamesOnePlayer(Long id) throws Exception {
+	public List<?> getAllGamesOnePlayer(String id) throws Exception {
 
 		try {
 
@@ -132,7 +132,7 @@ public class PlayerServiceImpl implements PlayerService {
 	
 	// Eliminar partidas d'un jugador
 		@Override
-		public void deleteGamesOnePlayer(Long id) throws Exception {
+		public void deleteGamesOnePlayer(String id) throws Exception {
 
 			try {
 

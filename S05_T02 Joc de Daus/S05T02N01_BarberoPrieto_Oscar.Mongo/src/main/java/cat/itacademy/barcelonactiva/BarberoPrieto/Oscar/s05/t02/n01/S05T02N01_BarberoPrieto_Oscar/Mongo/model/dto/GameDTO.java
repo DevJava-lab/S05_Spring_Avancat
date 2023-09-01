@@ -1,4 +1,4 @@
-package cat.itacademy.barcelonactiva.BarberoPrieto_Oscar.s05.t02.n01.S05T02N01.BarberoPrieto_Oscar.model.dto;
+package cat.itacademy.barcelonactiva.BarberoPrieto.Oscar.s05.t02.n01.S05T02N01_BarberoPrieto_Oscar.Mongo.model.dto;
 
 public class GameDTO {
 
@@ -6,14 +6,13 @@ public class GameDTO {
 	private int valorDau2;
 	private String resultat;
 	private double percentatge;
-	
+
 	public GameDTO(int valorDau1, int valorDau2, String resultat) {
 		super();
 		this.valorDau1 = valorDau1;
 		this.valorDau2 = valorDau2;
 		this.resultat = resultat;
 	}
-
 
 	public int getValorDau1() {
 		return valorDau1;

@@ -19,6 +19,8 @@ public interface PlayerService {
 	boolean delete(Long id) throws Exception;
 
 	List<?> getAllGamesOnePlayer(Long id) throws Exception;
+	
+	void deleteGamesOnePlayer(Long id) throws Exception;
 
 	double average() throws Exception;
 

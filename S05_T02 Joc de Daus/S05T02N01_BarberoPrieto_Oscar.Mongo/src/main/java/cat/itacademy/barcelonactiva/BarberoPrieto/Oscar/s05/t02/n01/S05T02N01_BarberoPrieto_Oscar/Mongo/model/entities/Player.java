@@ -1,51 +1,36 @@
-package cat.itacademy.barcelonactiva.BarberoPrieto_Oscar.s05.t02.n01.S05T02N01.BarberoPrieto_Oscar.model.entities;
+package cat.itacademy.barcelonactiva.BarberoPrieto.Oscar.s05.t02.n01.S05T02N01_BarberoPrieto_Oscar.Mongo.model.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
-@Entity
-@Table(name = "PLAYERS")
+@Document(collection = "Player")
+@JsonFormat
 public class Player implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private String id;
 
-	@Column(name = "NAME", nullable = false)
 	private String nom;
 
-	@Column(name = "PERCENTAGE")
-	private double percentatge;
-
-	@Column(name = "ROLLS")
-	private long rolls;
-
-	@Column(name = "WINNER")
-	private long winner;
-
-	@Temporal(TemporalType.DATE)
-	@Column(name = "REGIST DATE")
 	private Date data;
 
-	@OneToMany(mappedBy = "player", cascade = CascadeType.ALL, orphanRemoval = true)
-	@JsonManagedReference
+	private long rolls;
+
+	private long winner;
+
+	private double percentatge;
+
+	@DBRef
 	private List<Game> gamesPlayed = new ArrayList<>();
 
 	public Player() {
@@ -58,11 +43,11 @@ public class Player implements Serializable {
 		this.data = new Date();
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -83,25 +68,6 @@ public class Player implements Serializable {
 		this.data = data;
 	}
 
-	public double getPercentatge() {
-
-		return percentatge;
-	}
-
-	public void setPercentatge(double percentatge) {
-
-		this.percentatge = percentatge;
-	}
-
-
-	public List<Game> getGamesPlayed() {
-		return gamesPlayed;
-	}
-
-	public void setGamesPlayed(List<Game> gamesPlayed) {
-		this.gamesPlayed = gamesPlayed;
-	}
-
 	public long getRolls() {
 		return rolls;
 	}
@@ -116,6 +82,24 @@ public class Player implements Serializable {
 
 	public void setWinner(long winner) {
 		this.winner = winner;
+	}
+
+	public double getPercentatge() {
+
+		return percentatge;
+	}
+
+	public void setPercentatge(double percentatge) {
+
+		this.percentatge = percentatge;
+	}
+
+	public List<Game> getGamesPlayed() {
+		return gamesPlayed;
+	}
+
+	public void setGamesPlayed(List<Game> gamesPlayed) {
+		this.gamesPlayed = gamesPlayed;
 	}
 
 	public void addGame(Game game) {

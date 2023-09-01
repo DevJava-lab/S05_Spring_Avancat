@@ -1,4 +1,4 @@
-package cat.itacademy.barcelonactiva.BarberoPrieto_Oscar.s05.t02.n01.S05T02N01.BarberoPrieto_Oscar.controllers;
+package cat.itacademy.barcelonactiva.BarberoPrieto.Oscar.s05.t02.n01.S05T02N01_BarberoPrieto_Oscar.Mongo.controller;
 
 import java.util.List;
 
@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cat.itacademy.barcelonactiva.BarberoPrieto_Oscar.s05.t02.n01.S05T02N01.BarberoPrieto_Oscar.model.entities.Player;
-import cat.itacademy.barcelonactiva.BarberoPrieto_Oscar.s05.t02.n01.S05T02N01.BarberoPrieto_Oscar.model.service.GameService;
-import cat.itacademy.barcelonactiva.BarberoPrieto_Oscar.s05.t02.n01.S05T02N01.BarberoPrieto_Oscar.model.service.PlayerService;
+import cat.itacademy.barcelonactiva.BarberoPrieto.Oscar.s05.t02.n01.S05T02N01_BarberoPrieto_Oscar.Mongo.model.entities.Player;
+import cat.itacademy.barcelonactiva.BarberoPrieto.Oscar.s05.t02.n01.S05T02N01_BarberoPrieto_Oscar.Mongo.model.service.GameService;
+import cat.itacademy.barcelonactiva.BarberoPrieto.Oscar.s05.t02.n01.S05T02N01_BarberoPrieto_Oscar.Mongo.model.service.PlayerService;
 
 @RestController
 @RequestMapping(path = "/players")
@@ -56,7 +56,7 @@ public class PlayerController {
 
 	// Detalls d'un jugador
 	@GetMapping("/{id}")
-	public ResponseEntity<?> getOne(@PathVariable Long id) {
+	public ResponseEntity<?> getOne(@PathVariable String id) {
 
 		try {
 
@@ -69,7 +69,7 @@ public class PlayerController {
 
 	// Editar jugador
 	@PutMapping("/{id}")
-	public ResponseEntity<?> update(@PathVariable Long id, @RequestBody Player player) {
+	public ResponseEntity<?> update(@PathVariable String id, @RequestBody Player player) {
 
 		try {
 
@@ -82,7 +82,7 @@ public class PlayerController {
 
 	// Eliminar jugador
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> deletePlayer(@PathVariable Long id) {
+	public ResponseEntity<?> deletePlayer(@PathVariable String id) {
 
 		try {
 			
@@ -95,7 +95,7 @@ public class PlayerController {
 
 	// Guardar partida a un jugador.
 	@PostMapping("{id}/games")
-	public ResponseEntity<?> saveGame(@PathVariable Long id) {
+	public ResponseEntity<?> saveGame(@PathVariable String id) {
 
 		try {
 
@@ -121,7 +121,7 @@ public class PlayerController {
 
 	// Llista de les partides d'un jugador
 	@GetMapping("/{id}/games")
-	public ResponseEntity<List<?>> getGamesOne(@PathVariable Long id) {
+	public ResponseEntity<List<?>> getGamesOne(@PathVariable String id) {
 
 		try {
 
@@ -134,7 +134,7 @@ public class PlayerController {
 
 	// Eliminar partides d'un jugador
 	@DeleteMapping("/{id}/games")
-	public ResponseEntity<?> deleteGamesOnePlayer(@PathVariable Long id) {
+	public ResponseEntity<?> deleteGamesOnePlayer(@PathVariable String id) {
 		try {
 			playerService.deleteGamesOnePlayer(id);
 			return ResponseEntity.status(HttpStatus.OK).body("Històric jugades deleted");

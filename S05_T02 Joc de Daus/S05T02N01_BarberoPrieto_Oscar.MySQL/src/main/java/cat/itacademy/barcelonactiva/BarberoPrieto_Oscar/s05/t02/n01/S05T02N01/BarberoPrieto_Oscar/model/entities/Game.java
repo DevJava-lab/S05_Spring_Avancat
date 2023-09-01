@@ -42,7 +42,7 @@ public class Game implements Serializable {
 		super();
 		valorDau1 = (int) Math.floor(Math.random() * 6 + 1);
 		valorDau2 = (int) Math.floor(Math.random() * 6 + 1);
-		resultat = getResultat();
+		this.resultat = getResultat();
 	}
 
 	public Long getId() {
